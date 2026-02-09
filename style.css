@@ -18,17 +18,17 @@
 }
 
 :root {
-	--background: linear-gradient(190deg, #091b2c, #06374e, #082219);
-	--header: linear-gradient(90deg, #10152e, #06465f, #10b95c);
-	--btn: linear-gradient(135deg, #b910b6, #960546);
-	--container: linear-gradient(180deg, #020617, #41064e);
-	--second-btn: linear-gradient(135deg, #802c9f, #1d086a);
-	--white: #f0fdf4;
-	--grey: #bbf7d0;
-	--dark: #042f2e;
-	--dark-second: #2d134e;
-	--shadow: rgba(16, 185, 129, 0.25);
-	--ring: #38f87b; /* Крижаний блакитний для контрасту */
+	--background: linear-gradient(190deg, #0f051a, #2e1065, #0f051a);
+	--header: linear-gradient(90deg, #2e1065, #7c3aed, #fbbf24);
+	--btn: linear-gradient(135deg, #facc15, #ca8a04);
+	--container: linear-gradient(180deg, #1e1b4b, #2e1065);
+	--second-btn: linear-gradient(135deg, #4c1d95, #1e1b4b);
+	--white: #faf5ff;
+	--grey: #e9d5ff;
+	--dark: #0f172a;
+	--dark-second: #1e1b4b;
+	--shadow: rgba(250, 204, 21, 0.3);
+	--ring: #fde047;
 }
 * {
 	margin: 0;
@@ -121,53 +121,64 @@ header {
 	padding: 16px 32px;
 	background: var(--header);
 	border-radius: 12px;
-	box-shadow: -8px 8px 5px var(--shadow);
+	box-shadow: 0 0 10px var(--ring);
 	position: sticky;
 	top: 0;
 	z-index: 150;
 	overflow: hidden;
 }
 
-header::before {
-	content: '';
+.blob {
 	position: absolute;
-	bottom: -20px;
-	left: -20px;
-	width: 70px;
-	height: 70px;
-	border-radius: 50%;
-	background-image: url(./img/roulette.webp);
-	background-repeat: no-repeat;
-	background-size: cover;
-	transition: all 0.3s ease;
-	animation: spinSlow 12s linear infinite;
-	z-index: 100;
+	width: 100px;
+	height: 100px;
+	background: linear-gradient(135deg, #facc15, #f97316);
+	box-shadow:
+		0 0 50px rgba(250, 204, 21, 0.4),
+		inset 10px -10px 20px rgba(0, 0, 0, 0.1);
+	border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+	animation:
+		morph 8s ease-in-out infinite,
+		float 12s ease-in-out infinite;
+
+	filter: blur(1px);
+	z-index: -1;
 }
 
-header::after {
-	content: '';
-	position: absolute;
-	top: -15px;
-	right: 150px;
-	width: 20px;
-	height: 20px;
-	border-radius: 50%;
-	border: 7px solid var(--white);
-	border-top-color: var(--ring);
-	border-bottom-color: var(--ring);
-	animation: spinSlow 12s linear reverse infinite;
-}
-
-@keyframes spinSlow {
-	from {
-		transform: rotate(0deg);
+@keyframes morph {
+	0% {
+		border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
 	}
-	to {
-		transform: rotate(360deg);
+	25% {
+		border-radius: 45% 55% 50% 50% / 55% 45% 55% 45%;
+	}
+	50% {
+		border-radius: 30% 70% 70% 30% / 30% 30% 70% 70%;
+	}
+	75% {
+		border-radius: 55% 45% 40% 60% / 45% 55% 45% 55%;
+	}
+	100% {
+		border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+	}
+}
+
+@keyframes float {
+	0%,
+	100% {
+		transform: translate(0, 0) rotate(0deg);
+	}
+	33% {
+		transform: translate(30px, -50px) rotate(5deg);
+	}
+	66% {
+		transform: translate(-20px, 20px) rotate(-5deg);
 	}
 }
 
 .h-logo {
+	width: 100px;
+	height: auto;
 	margin-left: 20px;
 	z-index: 150;
 	border-radius: 5px;
@@ -242,7 +253,7 @@ header::after {
 	flex-direction: column;
 	align-items: start;
 	justify-content: space-evenly;
-	padding: 40px;
+	padding: 30px;
 	border-radius: 20px;
 	width: 50%;
 	height: 400px;
@@ -367,7 +378,7 @@ header::after {
 .banner-bonus-cash,
 .main-container {
 	background-color: var(--dark-second);
-	box-shadow: 0 0 11px var(--shadow);
+	box-shadow: 0 0 11px var(--ring);
 	transition: all 0.3s ease;
 	border: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -492,6 +503,10 @@ hr {
 	main {
 		width: 96%;
 		margin: 0 auto;
+	}
+
+	.h-logo {
+		width: 60px;
 	}
 
 	.h-btn {
