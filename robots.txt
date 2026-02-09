@@ -9,4 +9,4 @@ Disallow: /
 User-agent: CCBot
 Disallow: /
 
-Sitemap: https://www.benchtop.co.nz/sitemap.xml
+Sitemap: https://thekeralastore.co.uk/sitemap.xml
